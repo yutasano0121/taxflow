@@ -1,0 +1,212 @@
+{
+    "2024": {
+        "taxYear": 2024,
+        "lastUpdated": "2025-01-31",
+        "source": "IRS Rev. Proc. 2023-34",
+        "standardDeductions": {
+            "single": 14600,
+            "married-joint": 29200,
+            "married-separate": 14600,
+            "head-of-household": 21900
+        },
+        "taxBrackets": {
+            "single": [
+                { "min": 0,      "max": 11600,   "rate": 0.10 },
+                { "min": 11600,  "max": 47150,   "rate": 0.12 },
+                { "min": 47150,  "max": 100525,  "rate": 0.22 },
+                { "min": 100525, "max": 191950,  "rate": 0.24 },
+                { "min": 191950, "max": 243725,  "rate": 0.32 },
+                { "min": 243725, "max": 609350,  "rate": 0.35 },
+                { "min": 609350, "max": null,    "rate": 0.37 }
+            ],
+            "married-joint": [
+                { "min": 0,      "max": 23200,   "rate": 0.10 },
+                { "min": 23200,  "max": 94300,   "rate": 0.12 },
+                { "min": 94300,  "max": 201050,  "rate": 0.22 },
+                { "min": 201050, "max": 383900,  "rate": 0.24 },
+                { "min": 383900, "max": 487450,  "rate": 0.32 },
+                { "min": 487450, "max": 731200,  "rate": 0.35 },
+                { "min": 731200, "max": null,    "rate": 0.37 }
+            ],
+            "married-separate": [
+                { "min": 0,      "max": 11600,   "rate": 0.10 },
+                { "min": 11600,  "max": 47150,   "rate": 0.12 },
+                { "min": 47150,  "max": 100525,  "rate": 0.22 },
+                { "min": 100525, "max": 191950,  "rate": 0.24 },
+                { "min": 191950, "max": 243725,  "rate": 0.32 },
+                { "min": 243725, "max": 365600,  "rate": 0.35 },
+                { "min": 365600, "max": null,    "rate": 0.37 }
+            ],
+            "head-of-household": [
+                { "min": 0,      "max": 16550,   "rate": 0.10 },
+                { "min": 16550,  "max": 63100,   "rate": 0.12 },
+                { "min": 63100,  "max": 100500,  "rate": 0.22 },
+                { "min": 100500, "max": 191950,  "rate": 0.24 },
+                { "min": 191950, "max": 243700,  "rate": 0.32 },
+                { "min": 243700, "max": 609350,  "rate": 0.35 },
+                { "min": 609350, "max": null,    "rate": 0.37 }
+            ]
+        },
+        "ltcgBrackets": {
+            "single":            [{ "max": 47025,  "rate": 0.00 }, { "max": 518900,  "rate": 0.15 }, { "max": null, "rate": 0.20 }],
+            "married-joint":     [{ "max": 94050,  "rate": 0.00 }, { "max": 583750,  "rate": 0.15 }, { "max": null, "rate": 0.20 }],
+            "married-separate":  [{ "max": 47025,  "rate": 0.00 }, { "max": 291850,  "rate": 0.15 }, { "max": null, "rate": 0.20 }],
+            "head-of-household": [{ "max": 63000,  "rate": 0.00 }, { "max": 551350,  "rate": 0.15 }, { "max": null, "rate": 0.20 }]
+        },
+        "amtParams": {
+            "single":            { "exemption": 85700,  "phaseoutStart": 609350,  "rate26max": 232600 },
+            "married-joint":     { "exemption": 133300, "phaseoutStart": 1218700, "rate26max": 465200 },
+            "married-separate":  { "exemption": 66650,  "phaseoutStart": 609350,  "rate26max": 232600 },
+            "head-of-household": { "exemption": 85700,  "phaseoutStart": 609350,  "rate26max": 232600 }
+        },
+        "credits": {
+            "childTaxCredit": {
+                "perChild": 2000,
+                "refundableMax": 1600,
+                "phaseoutStart": {
+                    "single": 200000,
+                    "married-joint": 400000,
+                    "married-separate": 200000,
+                    "head-of-household": 200000
+                }
+            },
+            "americanOpportunityCredit": { "max": 2500 },
+            "lifetimeLearningCredit": { "max": 2000 },
+            "earnedIncomeCredit": {
+                "0dependents": 632,
+                "1dependent": 4213,
+                "2dependents": 6960,
+                "3plusDependents": 7830
+            }
+        },
+        "deductionLimits": {
+            "studentLoanInterest": 2500,
+            "traditionalIraMax": 7000,
+            "traditionalIraMaxAge50Plus": 8000,
+            "medicalExpenseFloor": 0.075,
+            "charitableCashLimit": 0.60,
+            "saltCap": 10000,
+            "mortgageDebtLimit": 750000
+        },
+        "compliance": {
+            "fbarThreshold": 10000,
+            "fatcaThresholdSingleEndOfYear": 50000,
+            "fatcaThresholdSingleAnyPoint": 75000,
+            "giftTaxAnnualExclusion": 17000,
+            "form3520ForeignGiftThreshold": 100000
+        },
+        "irsLinks": {
+            "form1040": "https://www.irs.gov/pub/irs-pdf/i1040gi.pdf",
+            "scheduleA": "https://www.irs.gov/pub/irs-pdf/i1040sca.pdf",
+            "scheduleB": "https://www.irs.gov/pub/irs-pdf/i1040sb.pdf",
+            "scheduleC": "https://www.irs.gov/pub/irs-pdf/i1040sc.pdf",
+            "schedule1": "https://www.irs.gov/pub/irs-pdf/i1040s1.pdf",
+            "fbar": "https://www.irs.gov/filing/fbar-filing"
+        }
+    },
+    "2025": {
+        "taxYear": 2025,
+        "lastUpdated": "2025-01-31",
+        "source": "IRS Rev. Proc. 2024-35",
+        "standardDeductions": {
+            "single": 15000,
+            "married-joint": 30000,
+            "married-separate": 15000,
+            "head-of-household": 22500
+        },
+        "taxBrackets": {
+            "single": [
+                { "min": 0,      "max": 11925,   "rate": 0.10 },
+                { "min": 11925,  "max": 48475,   "rate": 0.12 },
+                { "min": 48475,  "max": 103350,  "rate": 0.22 },
+                { "min": 103350, "max": 197300,  "rate": 0.24 },
+                { "min": 197300, "max": 250525,  "rate": 0.32 },
+                { "min": 250525, "max": 626350,  "rate": 0.35 },
+                { "min": 626350, "max": null,    "rate": 0.37 }
+            ],
+            "married-joint": [
+                { "min": 0,      "max": 23850,   "rate": 0.10 },
+                { "min": 23850,  "max": 96950,   "rate": 0.12 },
+                { "min": 96950,  "max": 206700,  "rate": 0.22 },
+                { "min": 206700, "max": 394600,  "rate": 0.24 },
+                { "min": 394600, "max": 501050,  "rate": 0.32 },
+                { "min": 501050, "max": 751600,  "rate": 0.35 },
+                { "min": 751600, "max": null,    "rate": 0.37 }
+            ],
+            "married-separate": [
+                { "min": 0,      "max": 11925,   "rate": 0.10 },
+                { "min": 11925,  "max": 48475,   "rate": 0.12 },
+                { "min": 48475,  "max": 103350,  "rate": 0.22 },
+                { "min": 103350, "max": 197300,  "rate": 0.24 },
+                { "min": 197300, "max": 250525,  "rate": 0.32 },
+                { "min": 250525, "max": 375800,  "rate": 0.35 },
+                { "min": 375800, "max": null,    "rate": 0.37 }
+            ],
+            "head-of-household": [
+                { "min": 0,      "max": 16550,   "rate": 0.10 },
+                { "min": 16550,  "max": 63100,   "rate": 0.12 },
+                { "min": 63100,  "max": 100500,  "rate": 0.22 },
+                { "min": 100500, "max": 191950,  "rate": 0.24 },
+                { "min": 191950, "max": 243700,  "rate": 0.32 },
+                { "min": 243700, "max": 609350,  "rate": 0.35 },
+                { "min": 609350, "max": null,    "rate": 0.37 }
+            ]
+        },
+        "ltcgBrackets": {
+            "single":            [{ "max": 48350,  "rate": 0.00 }, { "max": 533400,  "rate": 0.15 }, { "max": null, "rate": 0.20 }],
+            "married-joint":     [{ "max": 96700,  "rate": 0.00 }, { "max": 600050,  "rate": 0.15 }, { "max": null, "rate": 0.20 }],
+            "married-separate":  [{ "max": 48350,  "rate": 0.00 }, { "max": 300025,  "rate": 0.15 }, { "max": null, "rate": 0.20 }],
+            "head-of-household": [{ "max": 64650,  "rate": 0.00 }, { "max": 566700,  "rate": 0.15 }, { "max": null, "rate": 0.20 }]
+        },
+        "amtParams": {
+            "single":            { "exemption": 88600,  "phaseoutStart": 626350,  "rate26max": 239600 },
+            "married-joint":     { "exemption": 137300, "phaseoutStart": 1252700, "rate26max": 479200 },
+            "married-separate":  { "exemption": 68650,  "phaseoutStart": 626350,  "rate26max": 239600 },
+            "head-of-household": { "exemption": 88600,  "phaseoutStart": 626350,  "rate26max": 239600 }
+        },
+        "credits": {
+            "childTaxCredit": {
+                "perChild": 2000,
+                "refundableMax": 1700,
+                "phaseoutStart": {
+                    "single": 200000,
+                    "married-joint": 400000,
+                    "married-separate": 200000,
+                    "head-of-household": 200000
+                }
+            },
+            "americanOpportunityCredit": { "max": 2500 },
+            "lifetimeLearningCredit": { "max": 2000 },
+            "earnedIncomeCredit": {
+                "0dependents": 649,
+                "1dependent": 4328,
+                "2dependents": 7152,
+                "3plusDependents": 8046
+            }
+        },
+        "deductionLimits": {
+            "studentLoanInterest": 2500,
+            "traditionalIraMax": 7000,
+            "traditionalIraMaxAge50Plus": 8000,
+            "medicalExpenseFloor": 0.075,
+            "charitableCashLimit": 0.60,
+            "saltCap": 10000,
+            "mortgageDebtLimit": 750000
+        },
+        "compliance": {
+            "fbarThreshold": 10000,
+            "fatcaThresholdSingleEndOfYear": 50000,
+            "fatcaThresholdSingleAnyPoint": 75000,
+            "giftTaxAnnualExclusion": 18000,
+            "form3520ForeignGiftThreshold": 100000
+        },
+        "irsLinks": {
+            "form1040": "https://www.irs.gov/pub/irs-pdf/i1040gi.pdf",
+            "scheduleA": "https://www.irs.gov/pub/irs-pdf/i1040sca.pdf",
+            "scheduleB": "https://www.irs.gov/pub/irs-pdf/i1040sb.pdf",
+            "scheduleC": "https://www.irs.gov/pub/irs-pdf/i1040sc.pdf",
+            "schedule1": "https://www.irs.gov/pub/irs-pdf/i1040s1.pdf",
+            "fbar": "https://www.irs.gov/filing/fbar-filing"
+        }
+    }
+}

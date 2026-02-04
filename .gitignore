@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+app/node_modules/
+
+# Production build
+build/
+app/build/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated PDFs (optional — remove if you want to commit test PDFs)
+*.pdf
+
+
+*.ico
+*.png
+*.jpeg
+*.jpg
+*.tiff
