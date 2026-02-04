@@ -1,3 +1,11 @@
+## ⚠️ DISCLAIMER
+
+**This application is for educational purposes only.** The tax calculations provided by this software are simplified approximations and may be inaccurate or incomplete. Tax laws are complex and change frequently.
+
+**Do not use this application for filing actual tax returns.** Always consult a qualified tax professional or certified public accountant (CPA) for accurate tax preparation and filing.
+
+---
+
 # TaxFlow Pro — Open Source Tax Return Application
 
 A comprehensive, step-by-step tax return application built with React and Python.
