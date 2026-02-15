@@ -1,0 +1,31 @@
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.step-card {
+  animation: slideIn 0.35s ease-out;
+}
+
+.input-field {
+  transition: all 0.2s ease;
+}
+
+.input-field:focus {
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25);
+}
+
+.btn-primary {
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.35);
+}

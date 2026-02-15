@@ -3,7 +3,7 @@
 Tax Return PDF Generator
 Generates a Form 1040 summary PDF from the data exported by TaxFlow Pro.
 
-Field names match the current data model in enhanced-tax-app.jsx:
+Field names match the current data model in src/App.js:
     w2Wages, w2FederalTax, domesticInterest, domesticDividends,
     foreignInterest, foreignDividends, businessIncome, businessExpenses,
     pensionTaxable, miscIncomes[], studentLoanInterest, hsaSelfContribution,
@@ -51,11 +51,22 @@ def draw_section_header(c, y, title):
 def draw_line_item(c, y, label, amount, bold=False):
     """Draw a label on the left and a dollar amount right-aligned."""
     font = "Helvetica-Bold" if bold else "Helvetica"
-    size = 10 if not bold else 10
-    c.setFont(font, size)
+    c.setFont(font, 10)
     c.drawString(1.1 * inch, y, label)
     c.drawRightString(7.2 * inch, y, f"${amount:,.2f}")
     return y - 0.2 * inch
+
+
+FOOTER_MARGIN = 1.0  # inches from bottom — content must stay above this
+
+
+def check_page_break(c, y):
+    """Start a new page if y drops below the footer margin. Returns new y."""
+    if y < FOOTER_MARGIN * inch:
+        c.showPage()
+        _, height = letter
+        y = height - 1.0 * inch
+    return y
 
 
 def draw_flag(c, y, message):
@@ -120,6 +131,7 @@ def create_form_1040_summary(tax_data, tax_summary, output_path):
     # INCOME
     # ----------------------------------------------------------------
     y -= 0.15 * inch
+    y = check_page_break(c, y)
     y = draw_section_header(c, y, "Income")
 
     w2_wages            = safe_float(tax_data.get("w2Wages"))
@@ -166,6 +178,7 @@ def create_form_1040_summary(tax_data, tax_summary, output_path):
     # ADJUSTMENTS & AGI
     # ----------------------------------------------------------------
     y -= 0.15 * inch
+    y = check_page_break(c, y)
     y = draw_section_header(c, y, "Adjustments to Income")
 
     student_loan = min(safe_float(tax_data.get("studentLoanInterest")), 2500)
@@ -188,6 +201,7 @@ def create_form_1040_summary(tax_data, tax_summary, output_path):
     # DEDUCTIONS
     # ----------------------------------------------------------------
     y -= 0.15 * inch
+    y = check_page_break(c, y)
     y = draw_section_header(c, y, "Deductions")
 
     uses_itemized  = tax_summary.get("usesItemized", False)
@@ -219,6 +233,7 @@ def create_form_1040_summary(tax_data, tax_summary, output_path):
     # TAX & CREDITS
     # ----------------------------------------------------------------
     y -= 0.15 * inch
+    y = check_page_break(c, y)
     y = draw_section_header(c, y, "Tax and Credits")
 
     income_tax = safe_float(tax_summary.get("incomeTax"))
@@ -237,6 +252,7 @@ def create_form_1040_summary(tax_data, tax_summary, output_path):
     # PAYMENTS
     # ----------------------------------------------------------------
     y -= 0.15 * inch
+    y = check_page_break(c, y)
     y = draw_section_header(c, y, "Payments")
 
     w2_fed_withheld   = safe_float(tax_data.get("w2FederalTax"))
@@ -252,6 +268,7 @@ def create_form_1040_summary(tax_data, tax_summary, output_path):
     # REFUND / AMOUNT OWED
     # ----------------------------------------------------------------
     y -= 0.2 * inch
+    y = check_page_break(c, y)
     refund_or_owed = safe_float(tax_summary.get("refundOrOwed"))
 
     if refund_or_owed >= 0:
@@ -270,6 +287,7 @@ def create_form_1040_summary(tax_data, tax_summary, output_path):
     # ----------------------------------------------------------------
     # COMPLIANCE FLAGS
     # ----------------------------------------------------------------
+    y = check_page_break(c, y)
     foreign_max_balance = safe_float(tax_data.get("foreignBankMaxBalance"))
     if foreign_max_balance >= 10000:
         y = draw_flag(c, y, "FBAR REQUIRED — Foreign account balance exceeded $10,000. File FinCEN Form 114 at FinCEN.gov.")
