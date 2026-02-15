@@ -76,13 +76,44 @@ itemized deductions, tax credits, and compliance flags for FBAR, FATCA, and Form
 ## Project Structure
 
 ```
-taxflow-pro/
-├── enhanced-tax-app.jsx       # Main React application (copy to src/App.js)
-├── taxConfig.json             # Tax data: brackets, deductions, credits, compliance thresholds
-├── generate_tax_pdf.py        # Python PDF generator
-├── package.json               # Node.js dependencies
-├── README.md                  # This file
-└── TAX_UPDATE_GUIDE.md        # How to add a new tax year
+taxflow/
+├── public/                        # Static assets served by React
+├── scripts/
+│   ├── generate_tax_pdf.py        # Python PDF generator
+│   └── requirements.txt           # Python dependencies (reportlab)
+├── src/
+│   ├── components/
+│   │   ├── steps/                 # One component per wizard step
+│   │   │   ├── StepPersonal.js
+│   │   │   ├── StepW2.js
+│   │   │   ├── StepIncome.js
+│   │   │   ├── StepDeductions.js
+│   │   │   ├── StepCredits.js
+│   │   │   ├── StepRetirement.js
+│   │   │   └── StepReview.js
+│   │   └── ui/                    # Reusable UI primitives
+│   │       ├── InfoBox.js
+│   │       ├── Label.js
+│   │       ├── MoneyInput.js
+│   │       ├── SectionHead.js
+│   │       ├── TextInput.js
+│   │       └── Tip.js
+│   ├── config/
+│   │   └── taxConfig.json         # Tax data: brackets, deductions, credits, thresholds
+│   ├── data/
+│   │   └── blankState.js          # Default empty form state
+│   ├── hooks/
+│   │   ├── usePersistence.js      # Auto-save / restore via browser storage
+│   │   └── useTaxCalculation.js   # Real-time tax math
+│   ├── utils/
+│   │   ├── loadTaxConfig.js       # Loads and validates tax config
+│   │   └── taxHelpers.js          # Shared calculation helpers
+│   ├── App.js                     # Root component — wizard shell & routing
+│   └── index.js                   # React entry point
+├── package.json                   # Node.js dependencies
+├── tailwind.config.js             # Tailwind CSS configuration
+├── README.md                      # This file
+└── TAX_UPDATE_GUIDE.md            # How to add a new tax year
 ```
 
 ---
@@ -97,15 +128,8 @@ taxflow-pro/
 ### React App
 
 ```bash
-# Create a new React project
-npx create-react-app taxflow-pro
-cd taxflow-pro
-
-# Install the icon library
-npm install lucide-react
-
-# Copy the app file into src/ and rename it
-cp ../enhanced-tax-app.jsx src/App.js
+# Install dependencies
+npm install
 
 # Start the dev server
 npm start
@@ -116,15 +140,15 @@ npm start
 
 ```bash
 # Install the PDF library
-pip install reportlab
+pip install -r scripts/requirements.txt
 
 # Generate a PDF from exported data
-python3 generate_tax_pdf.py tax_data.json tax_summary.json output.pdf
+python3 scripts/generate_tax_pdf.py tax_data.json tax_summary.json output.pdf
 ```
 
 `tax_data.json` is the raw form data and `tax_summary.json` is the calculated summary.
 Both can be exported from the app (or constructed manually — see the field list in the
-docstring at the top of `generate_tax_pdf.py`).
+docstring at the top of `scripts/generate_tax_pdf.py`).
 
 ---
 
@@ -135,8 +159,8 @@ are hardcoded in two places that must stay in sync:
 
 | File | Role |
 |------|------|
-| `TAX_CONFIG` object inside `enhanced-tax-app.jsx` | Read by the React app at runtime |
-| `taxConfig.json` | Reference copy; also used by the PDF generator if you wire it up |
+| `src/config/taxConfig.json` | Read by the React app at runtime via `loadTaxConfig.js` |
+| `scripts/generate_tax_pdf.py` | Used by the PDF generator if you wire it up |
 
 The numbers only change once a year (IRS publishes them around October/November).
 See `TAX_UPDATE_GUIDE.md` for the step-by-step process of adding a new year.
